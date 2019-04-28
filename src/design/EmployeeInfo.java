@@ -2,7 +2,7 @@ package design;
 
 import java.util.Scanner;
 
-public class EmployeeInfo {
+public class EmployeeInfo extends EmployeeAbstract{
 
     /*This class can be implemented from Employee interface then add additional methods in EmployeeInfo class.
      * Also, Employee interface can be implemented into an abstract class.So create an Abstract class
@@ -20,7 +20,7 @@ public class EmployeeInfo {
     /*
      * declare few static and final fields and some non-static fields
      */
-    static String companyName;
+     public final static String companyName= "PnT";
 
     /*
      * You must implement the logic for below 2 methods and
@@ -32,13 +32,22 @@ public class EmployeeInfo {
      * you must have multiple constructor.
      * Must implement below constructor.
      */
+
+    static int employeeID;
+    static String employeeName;
+
     public EmployeeInfo(int employeeId) {
+        this.employeeID = employeeId;
+        System.out.println(employeeId);
 
     }
 
     public EmployeeInfo(String name, int employeeId) {
+        this.employeeName=name;
+        System.out.println(name+ " " + employeeId);
 
     }
+
 
     /*
      * This methods should calculate Employee bonus based on salary and performance.
@@ -48,8 +57,23 @@ public class EmployeeInfo {
      * So you probably need to send 2 arguments.
      *
      */
-    public static int calculateEmployeeBonus(int numberOfYearsWithCompany) {
-        int total = 0;
+    public static double calculateEmployeeBonus(int numberOfYearsWithCompany, double Salary, String performance) {
+        double bonus;
+        double total;
+        switch (performance){
+            case "Best Performance": bonus = Salary * .10; break;
+            case "Avarage Performce": bonus = Salary * .08; break;
+            case "Poor Performance": bonus = Salary * .06; break;
+            default:  bonus = Salary * .04;
+        }
+        if (numberOfYearsWithCompany >=10){
+            total = 1.50 * bonus;
+        }else if (numberOfYearsWithCompany>=5)
+            total = 1.25 * bonus;
+        else{
+            total = 1* bonus;
+        }
+        System.out.println("Yearly total bonus is:" + total);
         return total;
     }
 
@@ -59,8 +83,9 @@ public class EmployeeInfo {
      * Hints: pension will be 5% of the salary for 1 year, 10% for 2 years with the company and so on.
      *
      */
-    public static int calculateEmployeePension() {
-        int total = 0;
+    public static double calculateEmployeePension(int salary) {
+
+        double total = 0;
         Scanner sc = new Scanner(System.in);
         System.out.println("Please enter start date in format (example: May,2015): ");
         String joiningDate = sc.nextLine();
@@ -72,8 +97,27 @@ public class EmployeeInfo {
         //implement numbers of year from above two dates
         //Calculate pension
 
-
+        String startYear=convertedJoiningDate.substring(convertedJoiningDate.length()-4,convertedJoiningDate.length());
+        String currentYear=convertedTodaysDate.substring(convertedTodaysDate.length()-4,convertedTodaysDate.length());
+        int start = Integer.parseInt(startYear);
+        int current = Integer.parseInt(currentYear);
+        total = salary * (current-start) * 0.05;
+        System.out.println("Employee Pension is = $ " +total);
         return total;
+      /*  System.out.println(start);
+        System.out.println(current);
+        System.out.println(startYear);
+        System.out.println(currentYear);
+
+       */
+
+
+
+    }
+
+    @Override
+    void benefit() {
+        super.benefit();
     }
 
     private static class DateConversion {
@@ -112,22 +156,22 @@ public class EmployeeInfo {
                     date = 6;
                     break;
                 case July:
-                    date = 1;
+                    date = 7;
                     break;
                 case August:
-                    date = 1;
+                    date = 8;
                     break;
                 case September:
-                    date = 1;
+                    date = 9;
                     break;
                 case October:
-                    date = 1;
+                    date = 10;
                     break;
                 case November:
-                    date = 1;
+                    date = 11;
                     break;
                 case December:
-                    date = 1;
+                    date = 12;
                     break;
                 default:
                     date = 0;

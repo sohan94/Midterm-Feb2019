@@ -20,7 +20,7 @@ public class ProcessStudentInfo {
      * Here in the main method fill in the code that outlined to read xml data parsed into 2 separate ArrayList, then store into map.
      * Once map has all data, retrieve those data and out put to console.
      *
-     * Do any necessary steps that require for below successful output.
+     * Do any necessaryc steps that require for below successful output.
      * ......................................................
      * Student (id= 1) "Ibrahim" "Khan"        		Grade= B
      * Student (id= 2) "Asif" "Roni"          		Grade= A

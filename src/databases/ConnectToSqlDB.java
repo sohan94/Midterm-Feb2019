@@ -26,7 +26,7 @@ public class ConnectToSqlDB {
         return prop;
     }
 
-    public static Connection connectToSqlDatabase() throws IOException, SQLException, ClassNotFoundException {
+    public static Connection connectToSqlDatabase() throws IOException, ClassNotFoundException, SQLException {
         Properties prop = loadProperties();
         String driverClass = prop.getProperty("MYSQLJDBC.driver");
         String url = prop.getProperty("MYSQLJDBC.url");
@@ -43,7 +43,7 @@ public class ConnectToSqlDB {
         User user = null;
         try {
             Connection conn = connectToSqlDatabase();
-            String query = "SELECT * FROM Students";
+            String query = "SELECT * FROM studentINFO";
             // create the java statement
             Statement st = conn.createStatement();
             // execute the query, and get a java resultset

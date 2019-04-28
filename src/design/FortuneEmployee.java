@@ -17,6 +17,22 @@ public class FortuneEmployee {
 
 
 
+		System.out.println(EmployeeInfo.companyName);
+		//Employee information
+		EmployeeInfo Employee1 = new EmployeeInfo("Sohan",1);
+		//Employee ID
+		EmployeeInfo Employee = new EmployeeInfo(1);
+		//Employee Bonus
+		EmployeeInfo.calculateEmployeeBonus(2,100000,"Best Performance");
+		//Employee pension
+		double pension= EmployeeInfo.calculateEmployeePension(100000);
+		System.out.println(pension);
+
+
+
+
+
+
 	}
 
 }
